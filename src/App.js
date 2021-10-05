@@ -90,27 +90,28 @@ function App() {
 					Todo's
 				</div>
 				<div style={listStyle}>
-					{todos.map((t) => (
-						<div key={t.id} style={itemStyle}>
-							<div style={{display: 'flex'}}>
-								<div>
-									<input
-										style={{marginRight: 5}}
-										type='checkbox'
-										name='done'
-										checked={t.done}
-										onChange={() => {
-											handleDoneChange(t.id);
-										}}
-									/>
+					{todos &&
+						todos.map((t) => (
+							<div key={t.id} style={itemStyle}>
+								<div style={{display: 'flex'}}>
+									<div>
+										<input
+											style={{marginRight: 5}}
+											type='checkbox'
+											name='done'
+											checked={t.done}
+											onChange={() => {
+												handleDoneChange(t.id);
+											}}
+										/>
+									</div>
+									<div>{t.text}</div>
 								</div>
-								<div>{t.text}</div>
+								<div>
+									<button onClick={() => removeTodo(t.id)}>x</button>
+								</div>
 							</div>
-							<div>
-								<button onClick={() => removeTodo(t.id)}>x</button>
-							</div>
-						</div>
-					))}
+						))}
 				</div>
 			</div>
 

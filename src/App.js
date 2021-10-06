@@ -6,8 +6,12 @@ function App() {
 	const [text, setText] = useState('');
 
 	useEffect(() => {
-		const saved_data = localStorage.getItem('todos');
-		setTodos(JSON.parse(saved_data));
+		const saved_data = JSON.parse(localStorage.getItem('todos'));
+		if (saved_data) {
+			setTodos(saved_data);
+		} else {
+			setTodos([]);
+		}
 	}, []);
 
 	useEffect(() => {

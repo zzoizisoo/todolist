@@ -53,8 +53,7 @@ function App() {
 		margin: '3px 0px',
 		textAlign: 'left',
 		fontSize: 22,
-		lineHeight: '30px',
-		textShadow: '1px 1px 3px rgb(0 0 0 / 50%)'
+		lineHeight: '30px'
 	};
 
 	const widgetStyle = {

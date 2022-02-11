@@ -70,7 +70,7 @@ function App() {
 		backgroundColor: 'rgba(255,255,255,0.95)',
 		textAlign: 'left',
 		fontWeight: 700,
-		padding: '0.2em 0.5em 0.2em 0.22m',
+		padding: '0.2em 0.5em',
 		alignItems: 'center',
 		fontSize: 18,
 		color: 'grey'

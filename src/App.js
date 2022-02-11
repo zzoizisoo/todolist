@@ -1,5 +1,6 @@
 import './App.css';
 import {useState, useEffect} from 'react';
+import {RiCheckboxBlankCircleLine, RiCheckboxCircleFill} from 'react-icons/ri';
 
 function App() {
 	const [todos, setTodos] = useState([]);
@@ -51,27 +52,38 @@ function App() {
 		alignItems: 'center',
 		margin: '3px 0px',
 		textAlign: 'left',
-		fontWeight: 600,
-		fontSize: 17
+		fontSize: 22,
+		lineHeight: '30px',
+		textShadow: '1px 1px 3px rgb(0 0 0 / 50%)'
 	};
 
 	const widgetStyle = {
 		borderRadius: '5px',
-		backgroundColor: 'rgba(255,255,255,0.8)'
+		backgroundColor: 'rgba(255,255,255,0.5)',
+		border: '2px solid white'
 	};
 
 	const headerStyle = {
+		display: 'flex',
+		justifyContent: 'space-between',
 		borderRadius: '5px 5px 0px 0px',
 		backgroundColor: 'rgba(255,255,255,0.95)',
 		textAlign: 'left',
 		fontWeight: 700,
-		padding: '0.2em 0.5em',
-		display: 'flex',
-		alignItems: 'center'
+		padding: '0.2em 0.5em 0.2em 0.22m',
+		alignItems: 'center',
+		fontSize: 18,
+		color: 'grey'
 	};
 
 	const listStyle = {
 		padding: '0.2em'
+	};
+
+	const checkbtnStyle = {
+		border: 'none',
+		background: 'none',
+		fontSize: '1.5rem'
 	};
 
 	const imacStyleBtnStyle = (color) => {
@@ -80,7 +92,7 @@ function App() {
 			borderRadius: 100,
 			width: 12,
 			height: 12,
-			marginRight: 5
+			marginLeft: 5
 		};
 	};
 
@@ -88,10 +100,12 @@ function App() {
 		<div className='App'>
 			<div style={widgetStyle}>
 				<div style={headerStyle}>
-					<div style={imacStyleBtnStyle('#ff7373')} />
-					<div style={imacStyleBtnStyle('#ffb100')} />
-					<div style={{...imacStyleBtnStyle('#61cf61'), marginRight: 10}} />
-					Todo's
+					<div>Todos</div>
+					<div style={{display: 'flex'}}>
+						<div style={imacStyleBtnStyle('#ff7373')} />
+						<div style={imacStyleBtnStyle('#ffb100')} />
+						<div style={imacStyleBtnStyle('#61cf61')} />
+					</div>
 				</div>
 				<div style={listStyle}>
 					{todos &&
@@ -99,20 +113,16 @@ function App() {
 							<div key={t.id} style={itemStyle}>
 								<div style={{display: 'flex'}}>
 									<div>
-										<input
-											style={{marginRight: 5}}
-											type='checkbox'
-											name='done'
-											checked={t.done}
-											onChange={() => {
+										<button
+											style={checkbtnStyle}
+											onClick={() => {
 												handleDoneChange(t.id);
 											}}
-										/>
+										>
+											{t.done ? <RiCheckboxCircleFill fill={'#ffb100'} /> : <RiCheckboxBlankCircleLine />}
+										</button>
 									</div>
-									<div>{t.text}</div>
-								</div>
-								<div>
-									<button onClick={() => removeTodo(t.id)}>x</button>
+									<div onClick={() => removeTodo(t.id)}>{t.text}</div>
 								</div>
 							</div>
 						))}

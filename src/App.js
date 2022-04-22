@@ -56,6 +56,11 @@ function App() {
 		lineHeight: '30px'
 	};
 
+	const closeBtnStyle = {
+		border: 'none',
+		background: 'none'
+	};
+
 	const widgetStyle = {
 		borderRadius: '5px',
 		backgroundColor: 'rgba(255,255,255,0.5)',
@@ -121,8 +126,11 @@ function App() {
 											{t.done ? <RiCheckboxCircleFill fill={'#ffb100'} /> : <RiCheckboxBlankCircleLine />}
 										</button>
 									</div>
-									<div onClick={() => removeTodo(t.id)}>{t.text}</div>
+									<div>{t.text}</div>
 								</div>
+								<button onClick={() => removeTodo(t.id)} style={closeBtnStyle}>
+									X
+								</button>
 							</div>
 						))}
 				</div>
